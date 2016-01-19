@@ -1,0 +1,23 @@
+Bootstrap Service
+Service Port & Credentials
+System Props Installer
+JDBC Driver (and other JARs ?)
+RAR
+DataSource
+Modules
+System Core Settings (e.g. http listener)
+Audit Log
+Test Mods
+
+SAR Builder
+===========
+ivy to pull in dependencies
+archive merges (e.g. mqetclient)
+
+Opt
+===
+Maven Plugin
+Groovy Console
+Groovy Init Scripts
+JMXMP Server
+
