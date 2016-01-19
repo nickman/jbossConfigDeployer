@@ -1,0 +1,11 @@
+<server xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:jboss:service:7.0 jboss-service_7_0.xsd"
+        xmlns="urn:jboss:service:7.0">
+ <mbean code="config.SystemConfig" name="config:service=SystemConfig">
+ 	<attribute name="all">true</attribute>
+ 	<attribute name="sys">true</attribute>
+ 	<attribute name="debug">true</attribute>
+ 	<attribute name="lookupKey">INSTANCE_TYPE</attribute>
+ 	<attribute name="locations">file:/${user.home}/config/common.properties, file:/${user.home}/config/jboss.properties</attribute> 	
+ </mbean>
+</server>
