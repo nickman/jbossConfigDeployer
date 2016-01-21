@@ -1,8 +1,5 @@
 <classpath>
-  <classpathentry kind="src" path="src/test/java" output="target/test-classes" including="**/*.java"/>
   <classpathentry kind="src" path="src/test/resources" output="target/test-classes" excluding="**/*.java"/>
-  <classpathentry kind="src" path="src/main/java" including="**/*.java"/>
-  <classpathentry kind="src" path="src/main/resources" excluding="**/*.java"/>
   <classpathentry kind="output" path="target/classes"/>
   <classpathentry kind="var" path="M2_REPO/org/jboss/as/jboss-as-build-config/7.2.1.Final-redhat-10/jboss-as-build-config-7.2.1.Final-redhat-10.jar" sourcepath="M2_REPO/org/jboss/as/jboss-as-build-config/7.2.1.Final-redhat-10/jboss-as-build-config-7.2.1.Final-redhat-10-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/org/jboss/as/jboss-as-controller/7.2.1.Final-redhat-10/jboss-as-controller-7.2.1.Final-redhat-10.jar" sourcepath="M2_REPO/org/jboss/as/jboss-as-controller/7.2.1.Final-redhat-10/jboss-as-controller-7.2.1.Final-redhat-10-sources.jar"/>
@@ -18,7 +15,7 @@
   <classpathentry kind="var" path="M2_REPO/org/jboss/threads/jboss-threads/2.1.0.Final-redhat-1/jboss-threads-2.1.0.Final-redhat-1.jar" sourcepath="M2_REPO/org/jboss/threads/jboss-threads/2.1.0.Final-redhat-1/jboss-threads-2.1.0.Final-redhat-1-sources.jar"/>
   <classpathentry kind="var" path="M2_REPO/log4j/log4j/1.2.17/log4j-1.2.17.jar" sourcepath="M2_REPO/log4j/log4j/1.2.17/log4j-1.2.17-sources.jar">
     <attributes>
-      <attribute value="jar:file:/home/nwhitehead/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="jar:file:/media/nwhitehead/store/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/org/jboss/staxmapper/1.1.0.Final-redhat-2/staxmapper-1.1.0.Final-redhat-2.jar" sourcepath="M2_REPO/org/jboss/staxmapper/1.1.0.Final-redhat-2/staxmapper-1.1.0.Final-redhat-2-sources.jar"/>

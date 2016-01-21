@@ -1,0 +1,105 @@
+﻿<jxb:bindings version="2.1"
+			  xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+			  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			  xmlns:test="http://www.kscs.com/jaxb2/contract/test"
+			  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			  xmlns:annox="http://annox.dev.java.net"
+			  xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+			  xsi:schemaLocation="http://java.sun.com/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb/bindingschema_2_1.xsd"
+			  xmlns:jcb="http://java.sun.com/xml/ns/jaxb">
+
+	<jxb:bindings schemaLocation="../xsd/datasource/jboss-as-datasources_1_2.xsd">
+	
+        <jxb:bindings node="//xs:complexType[@name='subsystemType']">
+            <jxb:class name="subsystem"/>
+        </jxb:bindings>    
+
+        <jxb:bindings node="//xs:complexType[@name='datasourcesType']">
+ 			<annox:annotate><annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="datasources" /></annox:annotate>        	
+            <jxb:class name="datasources"/>
+        </jxb:bindings>    
+
+        <jxb:bindings node="//xs:complexType[@name='datasourceType']">
+        	<annox:annotate><annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="datasource" /></annox:annotate>
+            <jxb:class name="datasource"/>
+        </jxb:bindings>    
+
+        <jxb:bindings node="//xs:complexType[@name='xa-datasourceType']">
+            <jxb:class name="xaDatasource"/>
+        </jxb:bindings>    
+
+        <jxb:bindings node="//xs:complexType[@name='driversType']">
+            <jxb:class name="drivers"/>
+        </jxb:bindings>    
+
+        <jxb:bindings node="//xs:complexType[@name='connection-propertyType']">
+            <jxb:class name="connectionProperty"/>
+        </jxb:bindings>    
+
+
+        <jxb:bindings node="//xs:complexType[@name='poolType']">
+            <jxb:class name="pool"/>
+        </jxb:bindings>    
+
+        <jxb:bindings node="//xs:complexType[@name='dsSecurityType']">
+            <jxb:class name="dssecurity"/>
+        </jxb:bindings>    
+
+        <jxb:bindings node="//xs:complexType[@name='validationType']">
+            <jxb:class name="validation"/>
+        </jxb:bindings>    
+
+        <jxb:bindings node="//xs:complexType[@name='timeoutType']">
+            <jxb:class name="timeout"/>
+        </jxb:bindings>    
+
+        <jxb:bindings node="//xs:complexType[@name='statementType']">
+            <jxb:class name="statement"/>
+        </jxb:bindings>    
+
+        <jxb:bindings node="//xs:complexType[@name='xa-datasource-propertyType']">
+            <jxb:class name="xaDatasourceProperty"/>
+        </jxb:bindings>    
+
+        <jxb:bindings node="//xs:complexType[@name='xa-poolType']">
+            <jxb:class name="xaPool"/>
+        </jxb:bindings>    
+
+        <jxb:bindings node="//xs:complexType[@name='recoverType']">
+            <jxb:class name="recover"/>
+        </jxb:bindings>    
+
+        <jxb:bindings node="//xs:complexType[@name='extensionType']">
+            <jxb:class name="extension"/>
+        </jxb:bindings>    
+
+        <jxb:bindings node="//xs:complexType[@name='boolean-presenceType']">
+            <jxb:class name="booleanPresence"/>
+        </jxb:bindings>    
+
+
+        <jxb:bindings node="//xs:complexType[@name='config-propertyType']">
+            <jxb:class name="configProperty"/>
+        </jxb:bindings>    
+
+        <jxb:bindings node="//xs:complexType[@name='driverType']">
+            <jxb:class name="driver"/>
+        </jxb:bindings>
+        
+
+<!-- 
+        <jxb:bindings node="//xs:simpleType[@name='transaction-isolationType']">
+            <jxb:class name="transactionIsolation"/>
+        </jxb:bindings>    
+
+
+        <jxb:bindings node="//xs:simpleType[@name='track-statementsType']">
+            <jxb:class name="tStatements"/>
+        </jxb:bindings>    
+-->
+ 
+
+	
+	
+	</jxb:bindings>
+</jxb:bindings>

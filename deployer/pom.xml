@@ -29,6 +29,11 @@
             <groupId>org.jboss.as</groupId>
             <artifactId>jboss-as-controller</artifactId>
         </dependency>
+		<dependency>
+		  <groupId>org.jvnet.jaxb2_commons</groupId>
+		  <artifactId>jaxb2-basics-runtime</artifactId>
+		  <version>0.9.5</version>
+		</dependency>
 
     </dependencies>
 
@@ -36,6 +41,161 @@
     <build>
         <finalName>jboss.config</finalName>
         <plugins>
+            <!--
+        	<plugin>
+			  <groupId>org.codehaus.mojo</groupId>
+			  <artifactId>jaxb2-maven-plugin</artifactId>
+			  <version>${jaxb.version}</version>
+				<executions>                	
+                    <execution>
+                        <id>xjc-datasource</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                        <configuration>
+                            <sources><source>src/main/xsd/datasource</source></sources>
+                            <packageName>com.heliosapm.jboss.deployer.model.datasource</packageName>
+                            <clearOutputDir>false</clearOutputDir>
+                            <enableIntrospection>true</enableIntrospection>
+                            <outputDirectory>src/main/generated</outputDirectory>
+                            <xjbSources><xjbSource>src/main/xjb/global.xjb</xjbSource></xjbSources>
+                            <extension>true</extension>
+                        </configuration>              
+                    </execution>
+                    <execution>
+                        <id>xjc-resourceadapter</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                        <configuration>
+                            <sources><source>src/main/xsd/resourceadapter</source></sources>
+                            <packageName>com.heliosapm.jboss.deployer.model.resourceadapter</packageName>
+                            <clearOutputDir>false</clearOutputDir>
+                            <enableIntrospection>true</enableIntrospection>
+                            <outputDirectory>src/main/generated</outputDirectory>
+                            <xjbSources><xjbSource>src/main/xjb/global.xjb</xjbSource></xjbSources>
+                            <extension>true</extension>
+                        </configuration>              
+                    </execution>
+                    <execution>
+                        <id>xjc-sar</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                        <configuration>
+                            <sources><source>src/main/xsd/sar</source></sources>
+                            <packageName>com.heliosapm.jboss.deployer.model.sar</packageName>
+                            <clearOutputDir>false</clearOutputDir>
+                            <enableIntrospection>true</enableIntrospection>
+                            <outputDirectory>src/main/generated</outputDirectory>
+                            <xjbSources><xjbSource>src/main/xjb/global.xjb</xjbSource></xjbSources>
+                            <extension>true</extension>
+                            
+                        </configuration>              
+                    </execution>
+            	</executions>
+        	</plugin> -->
+            <plugin>
+              <groupId>org.jvnet.jaxb2.maven2</groupId>
+              <artifactId>maven-jaxb2-plugin</artifactId>
+              <version>0.13.1</version>
+             <executions>
+                <execution>
+                        <id>xsd-generate</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                	<enableIntrospection>true</enableIntrospection>
+                	<generatePackage>com.heliosapm.jboss.deployer.model.datasource</generatePackage>
+                	<addCompileSourceRoot>false</addCompileSourceRoot>
+                	<bindingDirectory>src/main/xjb</bindingDirectory>
+                	<generateDirectory>src/main/generated</generateDirectory>
+                	<schemaDirectory>src/main/xsd/datasource</schemaDirectory>
+                	<forceRegenerate>true</forceRegenerate>
+                	<strict>false</strict>
+                    <schemaIncludes>
+                        <schemaInclude>**/*.xsd</schemaInclude>
+                    </schemaIncludes>
+                    <strict>true</strict>
+                    <verbose>true</verbose>
+                    <extension>true</extension>
+                    <removeOldOutput>false</removeOldOutput>
+                    <args>
+                        <arg>-Xconstrained-properties</arg>
+                            <arg>-constrained=y</arg>
+                            <arg>-bound=y</arg>
+                            <arg>-setterThrows=n</arg>
+                            <arg>-generateTools=y</arg>
+                        <arg>-Xclone</arg>
+                            <arg>-cloneThrows=y</arg>
+                        <arg>-Xcopy</arg>
+                            <arg>-partial=y</arg>
+                            <arg>-generateTools=y</arg>
+                            <arg>-constructor=y</arg>
+                            <arg>-narrow=n</arg>
+                            <arg>-selectorClassName=Selector</arg>
+                            <arg>-rootSelectorClassName=Select</arg>
+                            <!-- 
+                        <arg>-Xgroup-contract</arg>
+                            <arg>-declareSetters=y</arg>
+                            <arg>-declareBuilderInterface=y</arg>
+                            <arg>-supportInterfaceNameSuffix=Lifecycle</arg>
+                            <arg>-upstreamEpisodeFile=/META-INF/jaxb-interfaces.episode</arg>
+                            <arg>-downstreamEpisodeFile=/META-INF/jaxb-interfaces.episode</arg>
+                            -->
+                        <arg>-Xmodifier</arg>
+                            <arg>-modifierClassName=Modifier</arg>
+                            <arg>-modifierMethodName=modifier</arg>
+                        <arg>-Xfluent-builder</arg>
+                            <arg>-rootSelectorClassName=Select</arg>
+                            <arg>-newBuilderMethodName=builder</arg>
+                            <arg>-newCopyBuilderMethodName=newCopyBuilder</arg>
+                            <arg>-copyToMethodName=copyTo</arg>
+                            <arg>-builderFieldSuffix=_Builder</arg>
+                            <arg>-generateTools=y</arg>
+                            <arg>-narrow=n</arg>
+                            <arg>-copyPartial=y</arg>
+                            <arg>-selectorClassName=Selector</arg>
+                            <arg>-builderClassName=Builder</arg>
+                            <arg>-builderInterfaceName=BuildSupport</arg>
+                            <arg>-copyAlways=n</arg>
+                            <arg>-buildMethodName=build</arg>
+                            <arg>-endMethodName=end</arg>
+                            <!--
+                        <arg>-Xmeta</arg>
+                            <arg>-generateTools=y</arg>
+                            <arg>-extended=n</arg>
+                            <arg>-camelCase=n</arg>
+                            <arg>-metaClassName=PropInfo</arg>
+                            <arg>-allowSet=y</arg>
+                            <arg>-visitMethodName=visit</arg>  -->
+						<arg>-Xannotate</arg>
+                        <arg>-XtoString</arg>                            
+                            
+                    </args>      
+                    <plugins>
+                        <plugin>
+                          <groupId>net.codesup.util</groupId>
+                          <artifactId>jaxb2-rich-contract-plugin</artifactId>
+                          <version>1.15.0</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.jvnet.jaxb2_commons</groupId>
+                            <artifactId>jaxb2-basics</artifactId>
+                            <version>0.6.2</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.jvnet.jaxb2_commons</groupId>
+                            <artifactId>jaxb2-basics-annotate</artifactId>
+                            <version>0.6.2</version>
+                        </plugin>                        
+                    </plugins>  
+                </configuration>      
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jboss-packaging-maven-plugin</artifactId>
@@ -62,10 +222,12 @@
                 <version>${compiler.version}</version>
                 <configuration>
                     <source>${compiler-source.version}</source>
-                    <target>${compiler-target.version}</target>
+                    <target>${compiler-target.version}</target>                    
+                    <generatedSourcesDirectory>src/main/generated</generatedSourcesDirectory>
                 </configuration>
             </plugin>
-            <plugin>
+            <!--
+            <plugin>                
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>${exec.version}</version>
@@ -81,7 +243,7 @@
                     </execution>
                 </executions>
             </plugin>
-            
+            -->
         </plugins>
     </build>
 
