@@ -8,20 +8,22 @@
 			  xsi:schemaLocation="http://java.sun.com/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb/bindingschema_2_1.xsd"
 			  xmlns:jcb="http://java.sun.com/xml/ns/jaxb">
 
+
+
 	<jxb:bindings schemaLocation="../xsd/datasource/jboss-as-datasources_1_2.xsd">
-	
+			  	
         <jxb:bindings node="//xs:complexType[@name='subsystemType']">
             <jxb:class name="subsystem"/>
         </jxb:bindings>    
 
         <jxb:bindings node="//xs:complexType[@name='datasourcesType']">
- 			<annox:annotate><annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="datasources" /></annox:annotate>        	
-            <jxb:class name="datasources"/>
+ 			    <annox:annotate><annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="datasources" /></annox:annotate>        	
+          <jxb:class name="datasources"/>
         </jxb:bindings>    
 
         <jxb:bindings node="//xs:complexType[@name='datasourceType']">
-        	<annox:annotate><annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="datasource" /></annox:annotate>
-            <jxb:class name="datasource"/>
+          <annox:annotate><annox:annotate annox:class="javax.xml.bind.annotation.XmlRootElement" name="datasource" /></annox:annotate>
+          <jxb:class name="datasource"/>
         </jxb:bindings>    
 
         <jxb:bindings node="//xs:complexType[@name='xa-datasourceType']">

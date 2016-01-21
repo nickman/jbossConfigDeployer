@@ -1,0 +1,25 @@
+<jaxb:bindings xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" 
+ xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+ xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+ jaxb:extensionBindingPrefixes="xjc" jaxb:version="2.1">
+ 
+    <jaxb:bindings schemaLocation="../xsd/datasource/jboss-as-datasources_1_2.xsd" node="/xs:schema">
+            <jaxb:globalBindings>
+                    <xjc:javaType name="java.lang.Integer" xmlType="xs:nonNegativeInteger" 
+                      adapter="com.heliosapm.jboss.deployer.jaxb.IntegerAdapter"
+						         />
+            </jaxb:globalBindings>
+    </jaxb:bindings>
+<!-- 
+    <jaxb:globalBindings>
+       <jaxb:javaType name="java.lang.Integer" 
+         xmlType="xs:nonNegativeInteger" 
+         parseMethod="com.heliosapm.jboss.deployer.jaxb.IntegerAdapter.toInt"
+         printMethod="com.heliosapm.jboss.deployer.jaxb.IntegerAdapter.fromInt"
+         />
+       
+    </jaxb:globalBindings>
+
+ -->     
+
+</jaxb:bindings>

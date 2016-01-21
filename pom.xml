@@ -32,6 +32,7 @@
             <shade.version>2.1</shade.version>
             <exec.version>1.2.1</exec.version>
             <jaxb.version>2.2</jaxb.version>
+            <eclipse.version>2.9</eclipse.version>
 
 
     </properties>
@@ -113,6 +114,15 @@
                 </executions>
             </plugin>
         -->
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-eclipse-plugin</artifactId>
+          <version>${eclipse.version}</version>
+          <configuration>
+              <classpathContainersLast>false</classpathContainersLast>
+              <ajdtVersion>none</ajdtVersion>
+          </configuration>
+      </plugin>     
             
         </plugins>
     </build>
