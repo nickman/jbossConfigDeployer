@@ -29,7 +29,7 @@ import javax.xml.transform.sax.SAXSource;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
-import com.heliosapm.jboss.deployer.jaxb.DatasourceXMLReader;
+import com.heliosapm.jboss.deployer.datasource.DatasourceXMLReader;
 import com.heliosapm.jboss.deployer.model.datasource.Datasource;
 import com.heliosapm.jboss.deployer.model.datasource.Datasources;
 import com.heliosapm.jboss.deployer.model.datasource.Subsystem;

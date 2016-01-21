@@ -10,13 +10,18 @@
     <groupId>com.heliosapm.jboss</groupId>
     <version>0.0.1-SNAPSHOT</version>
     <artifactId>deployer</artifactId>
-    <packaging>jboss-sar</packaging>
+    <packaging>jar</packaging>
     <name>JBoss Base Configuration Service  ::  Deployer</name>
     <url>https://github.com/nickman/jbossConfigDeployer</url>
 
 
 
     <dependencies>
+            <dependency>
+              <groupId>junit</groupId>
+              <artifactId>junit</artifactId>
+            </dependency>
+
            <dependency>
                <groupId>log4j</groupId>
                <artifactId>log4j</artifactId>
@@ -40,7 +45,21 @@
 
     <build>
         <finalName>jboss.config</finalName>
+        <resources>
+        	<resource><directory>src/main/java</directory></resource>
+        </resources>
         <plugins>
+	      <plugin>
+	          <groupId>org.apache.maven.plugins</groupId>
+	          <artifactId>maven-eclipse-plugin</artifactId>
+	          <version>${eclipse.version}</version>
+	          <configuration>
+	              <classpathContainersLast>false</classpathContainersLast>
+	              <ajdtVersion>none</ajdtVersion>
+	              
+	          </configuration>
+	      </plugin>     
+        
             <!--
         	<plugin>
 			  <groupId>org.codehaus.mojo</groupId>
@@ -196,18 +215,19 @@
                     </plugins>  
                 </configuration>      
             </plugin>
+            <!-- 
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jboss-packaging-maven-plugin</artifactId>
                 <version>${jboss-packaging-maven-plugin.version}</version>
-                <!-- Enable packaging types and lifecycle bindings. -->
                 <extensions>true</extensions>
                 <dependencies>
                 </dependencies>
                 <configuration>
                 	
                 </configuration>
-            </plugin>
+            </plugin>            
+            
             <plugin>
                 <groupId>org.jboss.as.plugins</groupId>
                 <artifactId>jboss-as-maven-plugin</artifactId>
@@ -217,15 +237,36 @@
                     <filename>jboss.config.sar</filename>                    
                 </configuration>
             </plugin>
+            -->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${compiler.version}</version>
                 <configuration>
                     <source>${compiler-source.version}</source>
-                    <target>${compiler-target.version}</target>                    
+                    <target>${compiler-target.version}</target>
                     <generatedSourcesDirectory>src/main/generated</generatedSourcesDirectory>
                 </configuration>
             </plugin>
+			<plugin>
+			 <groupId>org.codehaus.mojo</groupId>
+			 <artifactId>build-helper-maven-plugin</artifactId>
+			 <version>1.4</version>
+			 <executions>
+			   <execution>
+			     <id>add-jaxb-source</id>
+			   <phase>generate-sources</phase>
+			   <goals>
+			     <goal>add-source</goal>
+			   </goals>
+			   <configuration>
+			     <sources>
+			       <source>src/main/generated</source>			       
+			     </sources>
+			   </configuration>
+			 </execution>
+			 </executions>
+			 </plugin>
+             
             <!--
             <plugin>                
                 <groupId>org.codehaus.mojo</groupId>

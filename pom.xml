@@ -19,6 +19,7 @@
             <controller.version>7.2.1.Final-redhat-10</controller.version>
             <jboss-packaging-maven-plugin.version>2.2</jboss-packaging-maven-plugin.version>
             <jboss-as-maven-plugin.version>7.7.Final</jboss-as-maven-plugin.version>
+            <junit.version>4.9</junit.version>
 
             <!-- Plugin Versions -->
             <compiler.version>2.3.1</compiler.version>
@@ -44,6 +45,13 @@
 
     <dependencyManagement>
         <dependencies>
+			<dependency>
+			  <groupId>junit</groupId>
+			  <artifactId>junit</artifactId>
+			  <version>${junit.version}</version>
+			  <scope>test</scope>
+			</dependency>
+
                <dependency>
                    <groupId>log4j</groupId>
                    <artifactId>log4j</artifactId>

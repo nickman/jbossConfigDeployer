@@ -16,7 +16,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
  */
-package com.heliosapm.jboss.deployer.jaxb;
+package com.heliosapm.jboss.deployer.datasource;
 
 import java.io.IOException;
 
@@ -56,7 +56,8 @@ public class DatasourceXMLReader implements XMLReader {
 		parserFactory = SAXParserFactory.newInstance();
 		parserFactory.setNamespaceAware(false);
 		parserFactory.setValidating(false);
-		reader = parserFactory.newSAXParser().getXMLReader();	}
+		reader = parserFactory.newSAXParser().getXMLReader();	
+	}
 
 	/**
 	 * {@inheritDoc}

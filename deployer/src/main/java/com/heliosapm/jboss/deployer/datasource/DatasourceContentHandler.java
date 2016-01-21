@@ -16,7 +16,12 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
  */
-package com.heliosapm.jboss.deployer.jaxb;
+package com.heliosapm.jboss.deployer.datasource;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
@@ -35,12 +40,43 @@ public class DatasourceContentHandler implements ContentHandler {
 	
 	private ContentHandler handler;
 	
+	public static final Set<String> namespaced = Collections.unmodifiableSet(new HashSet<String>(
+			Arrays.asList("datasources", "datasource", "driver")
+	));
+	
 	/**
 	 * Creates a new DatasourceContentHandler
 	 */
 	public DatasourceContentHandler(final ContentHandler ch) {
 		handler = ch;
 	}
+	
+	/**
+	 * @param uri
+	 * @param localName
+	 * @param qName
+	 * @param atts
+	 * @throws SAXException
+	 * @see org.xml.sax.ContentHandler#startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes)
+	 */
+	public void startElement(String uri, String localName, String qName, Attributes atts) throws SAXException {
+		if("local-tx-datasource".equals(qName)) {
+			qName = "datasource";			
+		} else if("connection-factories".equals(qName)) {
+			qName = "datasources";
+		} else if("tx-connection-factory".equals(qName)) {
+			qName = "datasource";
+		}
+		//&& namespaced.contains(qName)
+		final String u = (uri.isEmpty() ) ? "urn:jboss:domain:datasources:1.2" : uri; 
+		if (!qName.equals(localName)) {
+			handler.startElement(u, localName.equals("") ? qName : localName, qName, atts);
+		} else {
+			handler.startElement(u, localName, qName, atts);
+		}
+//		handler.startElement(uri, localName, qName, atts);
+	}
+	
 
 	/**
 	 * @param locator
@@ -85,29 +121,6 @@ public class DatasourceContentHandler implements ContentHandler {
 		handler.endPrefixMapping(prefix);
 	}
 
-	/**
-	 * @param uri
-	 * @param localName
-	 * @param qName
-	 * @param atts
-	 * @throws SAXException
-	 * @see org.xml.sax.ContentHandler#startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes)
-	 */
-	public void startElement(String uri, String localName, String qName, Attributes atts) throws SAXException {
-		if("local-tx-datasource".equals(qName)) {
-			qName = "datasource";			
-		} else if("connection-factories".equals(qName)) {
-			qName = "datasources";
-		} else if("tx-connection-factory".equals(qName)) {
-			qName = "datasource";
-		}
-		if (!qName.equals(localName)) {
-			handler.startElement("", localName, qName, atts);
-		} else {
-			handler.startElement(uri, localName, qName, atts);
-		}
-//		handler.startElement(uri, localName, qName, atts);
-	}
 
 	/**
 	 * @param uri
