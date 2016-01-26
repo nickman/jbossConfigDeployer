@@ -38,7 +38,7 @@ public class DatasourceDeployer {
         //ModelControllerClient client = ModelControllerClient.Factory.create(
         //      InetAddress.getByName("127.0.0.1"), 9999, DemoAuthentication.getCallbackHandler());
         ModelControllerClient client = ModelControllerClient.Factory.create(
-                InetAddress.getByName("127.0.0.1"), 9990);
+                InetAddress.getByName("127.0.0.1"), 9998);
         try
         {
             String dsname = "oracle-bar";
