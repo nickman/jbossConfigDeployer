@@ -27,7 +27,7 @@ public class Client
     public static void main(String[] args) throws Exception
     {
         ModelControllerClient client = ModelControllerClient.Factory.create(
-                InetAddress.getByName("localhost"), 9999);
+                InetAddress.getByName("leopard"), 9999);
         try
         {
             ModelNode op = new ModelNode();
